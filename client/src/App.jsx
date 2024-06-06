@@ -1,25 +1,40 @@
 import "./App.scss";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 
 import Refresh from "./components/Refresh/Refresh";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
 
 function App() {
+  const [location, setLocation] = useState(useLocation());
+
   const handleRefresh = () => {
     window.location.reload();
   };
+
+  const getPageData = () => {
+    console.log(location.pathname);
+    switch (location.pathname) {
+      case "/square":
+        return { color: "#fe0222", type: "Transformations" }; //$red
+      case "/":
+      case "/circle":
+      default:
+        return { color: "#1300ff", type: "Opacity" }; //$blue
+    }
+  };
   return (
-    <BrowserRouter>
-      <Refresh onClick={() => handleRefresh()} />
+    <>
+      <Refresh color={getPageData().color} onClick={() => handleRefresh()} />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/circle" element={<HomePage type="circle" />} />
+        <Route path="/square" element={<HomePage type="square" />} />
         <Route path="/*" element={<h1>404 Not Found</h1>} />
       </Routes>
-      <Footer />
-    </BrowserRouter>
+      <Footer {...getPageData()} />
+    </>
   );
 }
 

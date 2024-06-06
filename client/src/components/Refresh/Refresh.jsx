@@ -12,7 +12,10 @@ const arrow = {
   hover: { rotate: 360, transition: { duration: 0.4 } },
 };
 
-const Refresh = ({onClick}) => {
+const Refresh = ({ color, onClick }) => {
+  const pathStyle = {
+    fill: color,
+  };
   return (
     <motion.div
       className="refresh"
@@ -34,6 +37,7 @@ const Refresh = ({onClick}) => {
           fill="#fff"
           fillRule="nonzero"
           className="refresh__path"
+          style={pathStyle}
         />
       </motion.svg>
     </motion.div>
