@@ -12,12 +12,12 @@ const arrow = {
   hover: { rotate: 360, transition: { duration: 0.4 } },
 };
 
-const Refresh = ({ onClick }) => {
+const Refresh = ({onClick}) => {
   return (
     <motion.div
       className="refresh"
-      onClick={onClick}
       variants={button}
+      onClick={onClick}
       inital="rest"
       whileHover="hover"
       whileTap="pressed"
