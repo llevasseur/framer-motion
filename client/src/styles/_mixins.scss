@@ -1,0 +1,29 @@
+@use "./variables" as *;
+
+@mixin flex($justify: center, $align: center) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// screen breakpoints
+@mixin tablet {
+  @media screen and (min-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: $desktop-breakpoint) {
+    @content;
+  }
+}
+
+// font-face
+@mixin font-face($font-family, $font-weight, $font-name) {
+  @font-face {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    src: url(../../assets/fonts/#{font-name}) format("ttf");
+  }
+}
