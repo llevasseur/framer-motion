@@ -14,4 +14,16 @@ body {
 
   //@font-face( font-family, font-weight, font-name )
   -webkit-font-smoothing: antialiased;
+
+  padding-bottom: 100px;
+}
+
+.app-container {
+  @include flex(center, center);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 90vh;
 }
