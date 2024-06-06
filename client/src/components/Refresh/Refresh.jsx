@@ -13,6 +13,10 @@ const arrow = {
 };
 
 const Refresh = ({ color, onClick }) => {
+  const boxStyle = {
+    border: `1px dotted ${color}`,
+    borderRadius: "5px",
+  };
   const pathStyle = {
     fill: color,
   };
@@ -24,6 +28,7 @@ const Refresh = ({ color, onClick }) => {
       inital="rest"
       whileHover="hover"
       whileTap="pressed"
+      style={boxStyle}
     >
       <motion.svg
         width="16"

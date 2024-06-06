@@ -2,6 +2,7 @@ import "./App.scss";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
+import Nav from "./components/Hamburger/Hamburger";
 import Refresh from "./components/Refresh/Refresh";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
@@ -14,7 +15,6 @@ function App() {
   };
 
   const getPageData = () => {
-    console.log(location.pathname);
     switch (location.pathname) {
       case "/square":
         return { color: "#fe0222", type: "Transformations" }; //$red
@@ -26,6 +26,7 @@ function App() {
   };
   return (
     <>
+      <Nav {...getPageData()} />
       <Refresh color={getPageData().color} onClick={() => handleRefresh()} />
       <Routes>
         <Route path="/" element={<HomePage />} />
