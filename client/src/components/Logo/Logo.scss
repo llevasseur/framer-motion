@@ -1,0 +1,9 @@
+@use "../../styles/variables" as *;
+
+.logo {
+  text-decoration: none;
+
+  &__path {
+    fill: $accent;
+  }
+}

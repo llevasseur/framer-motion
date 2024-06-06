@@ -1,0 +1,29 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  &__box {
+    @include flex(flex-start, center);
+    gap: 16px;
+  }
+
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+
+  border: 0.5px dotted $accent;
+  border-bottom: none;
+  border-right: none;
+  border-left: none;
+  border-radius: 2px;
+
+  padding: 20px;
+  padding-left: 30px;
+
+  color: $accent;
+  font-size: 14px;
+  line-height: 14px;
+
+  cursor: pointer;
+}
