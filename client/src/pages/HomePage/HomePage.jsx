@@ -21,7 +21,7 @@ const HomePage = ({ type }) => {
       }
     };
     applyType();
-  }, []);
+  }, [type]);
 
   return (
     <>

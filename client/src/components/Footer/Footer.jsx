@@ -14,7 +14,7 @@ const box = {
 const Footer = ({ color, type }) => {
   const style = {
     color: color,
-    border: `0.5px dotted ${color}`,
+    borderTop: `0.5px dotted ${color}`,
     borderBottom: "none",
     borderRight: "none",
     borderLeft: "none",

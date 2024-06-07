@@ -44,13 +44,15 @@
     }
 
     &--open &__line:nth-child(1) {
-      $length: 3px;
+      @include mobile {
+        $length: 2.5px;
+        transform: rotate(45deg) translate($length, $length);
+      }
 
       @include tablet {
         $length: 6px;
+        transform: rotate(45deg) translate($length, $length);
       }
-
-      transform: rotate(45deg) translate($length, $length);
     }
 
     &--open &__line:nth-child(2) {
@@ -58,30 +60,46 @@
     }
 
     &--open &__line:nth-child(3) {
-      $length: 4px;
+      @include mobile {
+        $length: 3.1px;
+        transform: rotate(-45deg) translate($length, -$length);
+      }
+
       @include tablet {
         $length: 7.5px;
+        transform: rotate(-45deg) translate($length, -$length);
       }
-      transform: rotate(-45deg) translate($length, -$length);
     }
   }
 }
 
 .menu {
   position: absolute;
-  top: 40px;
+  top: 52px;
   left: 0;
 
   background-color: $white;
-  border: 1px color #ccc;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   padding: 10px;
   z-index: 5px;
 
   @include tablet {
-    top: 60px;
+    top: 64px;
 
     padding: 20px;
   }
+
+  &__item {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: black;
+    z-index: 6;
+  }
+}
+
+.menu a:hover {
+  cursor: pointer;
+  color: $yellow;
 }
