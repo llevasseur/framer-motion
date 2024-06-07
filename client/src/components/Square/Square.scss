@@ -1,2 +1,22 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
+
+.square {
+  @include flex(center, center);
+
+  &__box {
+    width: 20vw;
+    height: 20vw;
+
+    min-width: 150px;
+    min-height: 150px;
+
+    max-width: 250px;
+    max-height: 250px;
+
+    border: 3px dotted $red;
+    border-radius: 20px;
+
+    pointer-events: none; // Not clickable
+  }
+}
