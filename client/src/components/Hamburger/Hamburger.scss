@@ -1,0 +1,105 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.hamburger {
+  @include flex(center, center);
+
+  position: absolute;
+  top: 10px;
+  left: 10px;
+
+  width: 16px;
+  height: 16px;
+
+  padding: 8px;
+
+  cursor: pointer;
+
+  z-index: 2;
+
+  @include tablet {
+    width: 32px;
+    height: 32px;
+  }
+
+  &__icon {
+    @include flex(space-around, center);
+    flex-direction: column;
+    width: 12px;
+    height: 12px;
+
+    @include tablet {
+      width: 28px;
+      height: 28px;
+    }
+
+    &__line {
+      width: 100%;
+      height: 2px;
+      transition: all 0.3s ease;
+
+      @include tablet {
+        height: 4px;
+      }
+    }
+
+    &--open &__line:nth-child(1) {
+      @include mobile {
+        $length: 2.5px;
+        transform: rotate(45deg) translate($length, $length);
+      }
+
+      @include tablet {
+        $length: 6px;
+        transform: rotate(45deg) translate($length, $length);
+      }
+    }
+
+    &--open &__line:nth-child(2) {
+      opacity: 0;
+    }
+
+    &--open &__line:nth-child(3) {
+      @include mobile {
+        $length: 3.1px;
+        transform: rotate(-45deg) translate($length, -$length);
+      }
+
+      @include tablet {
+        $length: 7.5px;
+        transform: rotate(-45deg) translate($length, -$length);
+      }
+    }
+  }
+}
+
+.menu {
+  position: absolute;
+  top: 52px;
+  left: 0;
+
+  background-color: $white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  padding: 10px;
+  z-index: 5px;
+
+  @include tablet {
+    top: 64px;
+
+    padding: 20px;
+  }
+
+  &__item {
+    display: block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: black;
+    z-index: 6;
+  }
+}
+
+.menu a:hover {
+  cursor: pointer;
+  color: $yellow;
+}
