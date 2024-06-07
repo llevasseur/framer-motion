@@ -8,7 +8,7 @@ import Logo from "../Logo/Logo";
 const box = {
   rest: { scale: 1, opacity: "100%" },
   hover: { scale: 1.1 },
-  pressed: { scale: 1, rotateY: "90deg", opacity: "15%" },
+  pressed: { scale: 1 },
 };
 
 const Footer = ({ color, type }) => {
