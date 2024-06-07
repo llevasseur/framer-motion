@@ -12,7 +12,14 @@ const arrow = {
   hover: { rotate: 360, transition: { duration: 0.4 } },
 };
 
-const Refresh = ({onClick}) => {
+const Refresh = ({ color, onClick }) => {
+  const boxStyle = {
+    border: `1px dotted ${color}`,
+    borderRadius: "5px",
+  };
+  const pathStyle = {
+    fill: color,
+  };
   return (
     <motion.div
       className="refresh"
@@ -21,6 +28,7 @@ const Refresh = ({onClick}) => {
       inital="rest"
       whileHover="hover"
       whileTap="pressed"
+      style={boxStyle}
     >
       <motion.svg
         width="16"
@@ -34,6 +42,7 @@ const Refresh = ({onClick}) => {
           fill="#fff"
           fillRule="nonzero"
           className="refresh__path"
+          style={pathStyle}
         />
       </motion.svg>
     </motion.div>

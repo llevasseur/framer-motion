@@ -1,0 +1,40 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.label {
+  @include flex(center, center);
+  margin: 10px 10px;
+
+  &__code {
+    width: 50px;
+
+    @include tablet {
+      width: 80px;
+    }
+  }
+
+  &__input {
+    @include flex(center, center);
+    flex-direction: column;
+    padding-left: 15px;
+
+    @include tablet {
+      padding-left: 20px;
+    }
+
+    &[type="number"] {
+      margin-left: 10px;
+      border: 0;
+      border-bottom: 1px dotted $red;
+      color: $red;
+
+      &:focus {
+        outline: none;
+        border-bottom: 1px dotted $red;
+      }
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+  }
+}
