@@ -1,0 +1,32 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.menu-item {
+  @include flex(center, center);
+
+  list-style: none;
+
+  margin-bottom: 20px;
+
+  cursor: pointer;
+
+  &__icon-placeholder {
+    flex: 20px 0;
+
+    width: 20px;
+    height: 20px;
+
+    margin-right: 20px;
+
+    border-radius: 50%;
+  }
+
+  &__text-placeholder {
+    flex: 1;
+
+    width: 200px;
+    height: 20px;
+
+    border-radius: 5px;
+  }
+}
