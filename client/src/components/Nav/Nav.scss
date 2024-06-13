@@ -1,0 +1,27 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.nav {
+  @include flex(center, center);
+
+  max-width: 300px;
+  max-height: 90vh;
+
+  padding: 8px;
+
+  z-index: 2;
+
+  @include tablet {
+    max-width: 340px;
+  }
+
+  &__background {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    bottom: 0;
+    background: #fff;
+    z-index: 1;
+    border: 1px dotted $blue;
+  }
+}

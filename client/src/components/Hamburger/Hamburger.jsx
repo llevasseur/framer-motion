@@ -1,68 +1,52 @@
 import "./Hamburger.scss";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { Link } from "react-router-dom";
 
-const hamburger = {
-  rest: { scale: 1 },
-  hover: { scale: 1.1 },
-  pressed: { scale: 0.95 },
+const Path = (props) => {
+  return (
+    <motion.path fill="red" strokeWidth="3" strokeLinecap="round" {...props} />
+  );
 };
 
-const Hamburger = ({ color, type }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const style = {
-    border: `1px dotted ${color}`,
-    borderRadius: "5px",
-  };
-
-  const lineStyle = {
-    backgroundColor: color,
-  };
-
-  const menuStyle = {
-    border: `1px solid ${color}`,
-    borderLeft: "none",
-  };
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Hamburger = ({ color, toggle, isTablet }) => {
+  console.log(isTablet);
+  const burgerStyle = isTablet
+    ? {
+        top: "31.5px",
+        left: "29.8px",
+        transform: "scale(1.5)",
+      }
+    : {
+        top: "19px",
+        left: "18px",
+      };
   return (
-    <>
-      <motion.div
-        className="hamburger"
-        variants={hamburger}
-        onClick={toggleMenu}
-        initial="rest"
-        whileHover="hover"
-        whileTap="pressed"
-        style={style}
-      >
-        <div
-          className={`hamburger__icon ${isOpen ? "hamburger__icon--open" : ""}`}
-        >
-          <div className="hamburger__icon__line" style={lineStyle}></div>
-          <div className="hamburger__icon__line" style={lineStyle}></div>
-          <div className="hamburger__icon__line" style={lineStyle}></div>
-        </div>
-      </motion.div>
-      {isOpen && (
-        <div className="menu" style={menuStyle}>
-          <Link to="/" onClick={toggleMenu} className="menu__item">
-            Home
-          </Link>
-          <Link to="/circle" onClick={toggleMenu} className="menu__item">
-            Opacity Example
-          </Link>
-          <Link to="/square" onClick={toggleMenu} className="menu__item">
-            Tranformation Example
-          </Link>
-        </div>
-      )}
-    </>
+    <button onClick={toggle} className="hamburger" style={burgerStyle}>
+      <svg width="32" height="32" viewBox="0 0 40 40">
+        <Path
+          variants={{
+            closed: { d: "M 2 2.5 L 20 2.5" },
+            open: { d: "M 3 16.5 L 17 2.5" },
+          }}
+          stroke={color || "hsl(0, 0%, 18%)"}
+        />
+        <Path
+          d="M 2 9.423 L 20 9.423"
+          variants={{
+            closed: { opacity: 1 },
+            open: { opacity: 0 },
+          }}
+          transition={{ duration: 0.1 }}
+          stroke={color || "hsl(0, 0%, 18%)"}
+        />
+        <Path
+          variants={{
+            closed: { d: "M 2 16.346 L 20 16.346" },
+            open: { d: "M 3 2.5 L 17 16.346" },
+          }}
+          stroke={color || "hsl(0, 0%, 18%)"}
+        />
+      </svg>
+    </button>
   );
 };
 

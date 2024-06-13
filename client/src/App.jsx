@@ -2,7 +2,7 @@ import "./App.scss";
 import { useState, useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 
-import Nav from "./components/Hamburger/Hamburger";
+import Nav from "./components/Nav/Nav";
 import Refresh from "./components/Refresh/Refresh";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
