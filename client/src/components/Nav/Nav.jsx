@@ -6,6 +6,7 @@ import Hamburger from "../Hamburger/Hamburger";
 import Menu from "../Menu/Menu";
 import CircleIcon from "../../assets/images/circle.png";
 import SquareIcon from "../../assets/images/square.png";
+import PillIcon from "../../assets/images/pill.png";
 
 const debounce = (fn, ms) => {
   let timer;
@@ -21,6 +22,7 @@ const debounce = (fn, ms) => {
 const pagesData = [
   { url: "/circle", name: "Opacity", icon: CircleIcon, color: "blue" },
   { url: "/square", name: "Transformations", icon: SquareIcon, color: "red" },
+  { url: "/pill", name: "Spring Hover", icon: PillIcon, color: "#00ccff" },
 ];
 
 const Nav = ({ color, type, pages }) => {

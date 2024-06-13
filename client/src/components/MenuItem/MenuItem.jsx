@@ -1,7 +1,6 @@
 import "./MenuItem.scss";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useCycle } from "framer-motion";
 import { useContext } from "react";
 import { NavContext } from "../Nav/NavContext";
 

@@ -11,13 +11,18 @@ const variants = {
   },
 };
 
-const itemIds = [0, 1];
+const itemIds = [0, 1, 2];
 
 const Menu = ({ pages, color }) => {
   return (
     <motion.ul variants={variants} className="menu-ul">
       {itemIds.map((i) => (
-        <MenuItem page={pages[i]} key={i} color={color} className="menu-ul__item"/>
+        <MenuItem
+          page={pages[i]}
+          key={i}
+          color={color}
+          className="menu-ul__item"
+        />
       ))}
     </motion.ul>
   );
