@@ -23,7 +23,7 @@ const pagesData = [
   { url: "/square", name: "Transformations", icon: SquareIcon, color: "red" },
 ];
 
-const Nav = ({ color, type, pages }) => {
+const Nav = ({ color }) => {
   const { isOpen, toggleOpen } = useContext(NavContext);
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
@@ -88,12 +88,12 @@ const Nav = ({ color, type, pages }) => {
         animate={isOpen ? sidebar.open : sidebar.closed}
         style={boxStyle}
       />
-      <Menu pages={pagesData} color={color} />
       <Hamburger
         color={color}
         toggle={() => toggleOpen()}
         isTablet={isTablet}
       />
+      <Menu pages={pagesData} color={color} />
     </motion.nav>
   );
 };

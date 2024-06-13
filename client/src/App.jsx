@@ -40,7 +40,7 @@ function App() {
         <Route path="/square" element={<HomePage type="square" />} />
         <Route path="/*" element={<h1>404 Not Found</h1>} />
       </Routes>
-      <Nav {...pageData} />
+      <Nav color={pageData.color} />
       <Refresh color={pageData.color} onClick={handleRefresh} />
       <Footer {...pageData} />
     </>
