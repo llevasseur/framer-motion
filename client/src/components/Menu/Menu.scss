@@ -1,0 +1,13 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.menu-ul {
+  @include flex(flex-start, center);
+  flex-direction: column;
+  position: relative;
+  top: 60px;
+  left: 0px;
+
+  padding-right: 16px;
+  z-index: 2;
+}
