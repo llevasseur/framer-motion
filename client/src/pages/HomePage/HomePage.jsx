@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 
 import Circle from "../../components/Circle/Circle";
 import Square from "../../components/Square/Square";
+import Pill from "../../components/Pill/Pill";
 
 const HomePage = ({ type }) => {
   const [app, setApp] = useState(<Circle />);
@@ -12,6 +13,10 @@ const HomePage = ({ type }) => {
       switch (type) {
         case "square":
           setApp(<Square />);
+          break;
+
+        case "pill":
+          setApp(<Pill />);
           break;
 
         case "circle":

@@ -12,7 +12,7 @@ function App() {
   const [pageData, setPageData] = useState({
     color: "#1300ff",
     type: "Opacity",
-  });
+  }); // default to circle Opacity
 
   const handleRefresh = () => {
     window.location.reload();
@@ -23,6 +23,8 @@ function App() {
       switch (location.pathname) {
         case "/square":
           return { color: "#fe0222", type: "Transformations" }; //$red
+        case "/pill":
+          return { color: "#00ccff", type: "Spring Hover" };
         case "/":
         case "/circle":
         default:
@@ -38,6 +40,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/circle" element={<HomePage type="circle" />} />
         <Route path="/square" element={<HomePage type="square" />} />
+        <Route path="/pill" element={<HomePage type="pill" />} />
         <Route path="/*" element={<h1>404 Not Found</h1>} />
       </Routes>
       <Nav {...pageData} />

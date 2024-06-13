@@ -8,7 +8,6 @@ const Path = (props) => {
 };
 
 const Hamburger = ({ color, toggle, isTablet }) => {
-  console.log(isTablet);
   const burgerStyle = isTablet
     ? {
         top: "31.5px",
