@@ -2,9 +2,12 @@
 @use "../../styles/mixins" as *;
 
 .menu-ul {
-  position: absolute;
+  @include flex(flex-start, center);
+  flex-direction: column;
+  position: relative;
   top: 60px;
-  width: 230px;
+  left: 0px;
 
-  padding: 25px;
+  padding-right: 16px;
+  z-index: 2;
 }

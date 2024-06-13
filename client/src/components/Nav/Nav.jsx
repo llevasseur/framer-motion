@@ -1,81 +1,84 @@
-import './Nav.scss'
-import { motion, useCycle } from 'framer-motion'
-import { useRef, useState, useEffect } from 'react'
-import Hamburger from '../Hamburger/Hamburger'
-import Menu from '../Menu/Menu'
+import "./Nav.scss";
+import { motion } from "framer-motion";
+import { useState, useEffect, useContext } from "react";
+import { NavContext } from "./NavContext";
+import Hamburger from "../Hamburger/Hamburger";
+import Menu from "../Menu/Menu";
+import CircleIcon from "../../assets/images/circle.png";
+import SquareIcon from "../../assets/images/square.png";
 
 const debounce = (fn, ms) => {
-  let timer
+  let timer;
   return (_) => {
-    clearTimeout(timer)
+    clearTimeout(timer);
     timer = setTimeout((_) => {
-      timer = null
-      fn()
-    }, ms)
-  }
-}
+      timer = null;
+      fn();
+    }, ms);
+  };
+};
 
-// TODO make responsive
+const pagesData = [
+  { url: "/circle", name: "Opacity", icon: CircleIcon, color: "blue" },
+  { url: "/square", name: "Transformations", icon: SquareIcon, color: "red" },
+];
 
 const Nav = ({ color, type, pages }) => {
-  const [isOpen, toggleOpen] = useCycle(false, true)
-  const containerRef = useRef(null)
-  console.log(window.innerWidth)
+  const { isOpen, toggleOpen } = useContext(NavContext);
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
-  )
+  );
 
   const boxStyle = {
     border: `1px dotted ${color}`,
-  }
+  };
 
   const sidebar = {
     open: {
-      top: 0,
-      left: 0,
-      width: isTablet ? 300 : 300,
-      height: '100vh',
-      borderRadius: '0%',
+      top: -1,
+      left: -1,
+      width: isTablet ? 340 : 300,
+      height: `100vh`,
+      borderRadius: "0%",
       transition: {
-        type: 'spring',
+        type: "spring",
         stiffness: 50,
-        restDelta: 0,
-        duration: 0.001,
+        restDelta: 2,
+        duration: 0.01,
       },
     },
     closed: {
       top: 10,
       left: 10,
-      width: isTablet ? 50 : 40,
-      height: isTablet ? 50 : 40,
-      borderRadius: '5px',
+      width: isTablet ? 48 : 32,
+      height: isTablet ? 48 : 32,
+      borderRadius: "5px",
       transition: {
         delay: 0.5,
-        type: 'spring',
+        type: "spring",
         stiffness: 400,
         damping: 40,
       },
     },
-  }
+  };
 
   useEffect(() => {
     const handleResize = () => {
-      setIsTablet(window.innerWidth >= 768)
-    }
-    const debouncedHandleResize = debounce(handleResize, 30)
+      setIsTablet(window.innerWidth >= 768);
+    };
+    const debouncedHandleResize = debounce(handleResize, 10);
 
-    window.addEventListener('resize', debouncedHandleResize)
+    window.addEventListener("resize", debouncedHandleResize);
 
     return (_) => {
-      window.removeEventListener('resize', debouncedHandleResize)
-    }
-  }, [])
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  }, []);
   return (
     <motion.nav
       initial={false}
-      animate={isOpen ? 'open' : 'closed'}
+      animate={isOpen ? "open" : "closed"}
       custom={isTablet}
-      ref={containerRef}
       className="nav"
     >
       <motion.div
@@ -85,13 +88,14 @@ const Nav = ({ color, type, pages }) => {
         animate={isOpen ? sidebar.open : sidebar.closed}
         style={boxStyle}
       />
-      <Menu />
+      <Menu pages={pagesData} color={color} />
       <Hamburger
         color={color}
         toggle={() => toggleOpen()}
+        isTablet={isTablet}
       />
     </motion.nav>
-  )
-}
+  );
+};
 
-export default Nav
+export default Nav;

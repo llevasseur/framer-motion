@@ -1,5 +1,9 @@
 import "./MenuItem.scss";
 import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { useCycle } from "framer-motion";
+import { useContext } from "react";
+import { NavContext } from "../Nav/NavContext";
 
 const variants = {
   open: {
@@ -18,19 +22,37 @@ const variants = {
   },
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
+const MenuItem = ({ page }) => {
+  const style = { border: `1px dotted ${page.color}` };
+  const { isOpen, toggleOpen } = useContext(NavContext);
+  const navigate = useNavigate();
 
-const MenuItem = ({ i }) => {
-  const style = { border: `2px solid ${colors[i]}` };
+  const iconStyle = { border: page.url == "/circle" ? "10px" : "2px" };
+  const textStyle = { color: page.color };
+
+  const handleClick = () => {
+    if (isOpen) {
+      toggleOpen(); // collapse the menu
+      setTimeout(() => {
+        navigate(page.url);
+      }, 500);
+    } else {
+      navigate(page.url);
+    }
+  };
   return (
     <motion.li
       className="menu-item"
       variants={variants}
-      whileHover={{ scale: 1.1 }}
+      whileHover={{ scale: 1.05, boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)" }}
       whileTap={{ scale: 0.95 }}
+      style={style}
+      onClick={handleClick}
     >
-      <div className="menu-item__icon-placeholder" style={style} />
-      <div className="menu-item__text-placeholder" style={style} />
+      <img className="menu-item__icon" src={page.icon} style={iconStyle} />
+      <code className="menu-item__text" style={textStyle}>
+        {page.name}
+      </code>
     </motion.li>
   );
 };
