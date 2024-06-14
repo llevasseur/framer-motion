@@ -21,13 +21,11 @@
     height: 32px;
   }
 
+  background: #fff;
+
   &__svg {
     @include tablet {
       scale: 1.5;
     }
-  }
-
-  &__path {
-    fill: $accent;
   }
 }
