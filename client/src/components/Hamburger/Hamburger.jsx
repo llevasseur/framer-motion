@@ -16,7 +16,7 @@ const Hamburger = ({ color, toggle, isTablet }) => {
       }
     : {
         top: "19px",
-        left: "18px",
+        left: "18.3px",
       };
   return (
     <button onClick={toggle} className="hamburger" style={burgerStyle}>

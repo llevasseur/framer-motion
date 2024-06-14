@@ -8,12 +8,14 @@ const circleBox = {
 
 const Circle = () => {
   return (
-    <motion.div
-      className="circle"
-      variants={circleBox}
-      initial="initial"
-      animate="animate"
-    />
+    <motion.div className="background">
+      <motion.div
+        className="circle"
+        variants={circleBox}
+        initial="initial"
+        animate="animate"
+      />
+    </motion.div>
   );
 };
 
