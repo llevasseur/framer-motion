@@ -69,8 +69,8 @@ const Hamburger = ({ color, toggle, isTablet }) => {
         transform: `scale(${baseScale})`,
       }
     : {
-        top: "19px",
-        left: "18.3px",
+        top: "11px",
+        left: "11px",
       };
   return (
     <motion.button
@@ -95,7 +95,6 @@ const Hamburger = ({ color, toggle, isTablet }) => {
           initial="closed"
           animate={isOpen ? "open" : "closed"}
           stroke={color || "hsl(0, 0%, 18%)"}
-          whileHover="hover"
         />
         <Path
           d="M 10 20 L 30 20"
