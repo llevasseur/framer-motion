@@ -16,10 +16,10 @@
   &__input {
     @include flex(center, center);
     flex-direction: column;
-    padding-left: 15px;
+    // padding-left: 15px;
 
     @include tablet {
-      padding-left: 20px;
+      // padding-left: 20px;
     }
 
     &[type="number"] {

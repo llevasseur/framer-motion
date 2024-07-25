@@ -13,6 +13,18 @@ const Square = () => {
   const [x, setX] = useState(0);
   const [y, setY] = useState(0);
   const [rotate, setRotate] = useState(0);
+
+  const handleChangeX = (value) => {
+    setX(value);
+  };
+
+  const handleChangeY = (value) => {
+    setY(value);
+  };
+
+  const handleChangeRotate = (value) => {
+    setRotate(value);
+  };
   return (
     <motion.div className="background">
       <motion.div
@@ -29,16 +41,16 @@ const Square = () => {
           />
         </div>
         <div className="inputs">
-          <Input color={"red"} value={x} set={setX}>
+          <Input color={"red"} value={x} handleChange={handleChangeX}>
             x
           </Input>
-          <Input color={"red"} value={y} set={setY}>
+          <Input color={"red"} value={y} handleChange={handleChangeY}>
             y
           </Input>
           <Input
             color={"red"}
             value={rotate}
-            set={setRotate}
+            handleChange={handleChangeRotate}
             min={-180}
             max={180}
           >
