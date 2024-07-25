@@ -6,6 +6,8 @@ import Hamburger from "../Hamburger/Hamburger";
 import Menu from "../Menu/Menu";
 import CircleIcon from "../../assets/images/circle.png";
 import SquareIcon from "../../assets/images/square.png";
+import PillIcon from "../../assets/images/pill.png";
+import DragIcon from "../../assets/images/drag.png";
 
 const debounce = (fn, ms) => {
   let timer;
@@ -21,9 +23,11 @@ const debounce = (fn, ms) => {
 const pagesData = [
   { url: "/circle", name: "Opacity", icon: CircleIcon, color: "blue" },
   { url: "/square", name: "Transformations", icon: SquareIcon, color: "red" },
+  { url: "/pill", name: "Spring Hover", icon: PillIcon, color: "#00ccff" },
+  { url: "/drag", name: "Drag", icon: DragIcon, color: "#900af6" },
 ];
 
-const Nav = ({ color, type, pages }) => {
+const Nav = ({ color }) => {
   const { isOpen, toggleOpen } = useContext(NavContext);
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
@@ -88,7 +92,7 @@ const Nav = ({ color, type, pages }) => {
         animate={isOpen ? sidebar.open : sidebar.closed}
         style={boxStyle}
       />
-      <Menu pages={pagesData} color={color} />
+      <Menu pages={pagesData} color={color} isOpen={isOpen} />
       <Hamburger
         color={color}
         toggle={() => toggleOpen()}

@@ -27,3 +27,10 @@ body {
   width: 100%;
   height: 90vh;
 }
+
+.background {
+  @include flex(center, center);
+  width: 100vw;
+  height: 98vh;
+  background: linear-gradient(180deg, #ffffff 0%, #e3e2e2 100%);
+}
