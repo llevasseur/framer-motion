@@ -69,9 +69,8 @@ const Hamburger = ({ color, toggle, isTablet }) => {
         transform: `scale(${baseScale})`,
       }
     : {
-        top: "10.5px",
-        left: "10.5px",
-        transform: `scale(${baseScale})`,
+        top: "19px",
+        left: "18.3px",
       };
   return (
     <motion.button

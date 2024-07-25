@@ -1,7 +1,6 @@
 import "./MenuItem.scss";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { useCycle } from "framer-motion";
 import { useContext } from "react";
 import { NavContext } from "../Nav/NavContext";
 
@@ -27,7 +26,7 @@ const MenuItem = ({ page }) => {
   const { isOpen, toggleOpen } = useContext(NavContext);
   const navigate = useNavigate();
 
-  const iconStyle = { border: page.url == "/circle" ? "10px" : "2px" };
+  const iconStyle = { border: page.url === "/circle" ? "10px" : "2px" };
   const textStyle = { color: page.color };
 
   const handleClick = () => {

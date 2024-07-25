@@ -1,0 +1,14 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.not-found {
+  @include flex;
+  flex-direction: column;
+
+  &__code {
+    font-size: 4rem;
+  }
+  &__title {
+    font-size: 3rem;
+  }
+}

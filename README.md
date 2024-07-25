@@ -32,6 +32,5 @@ Open http://localhost:5173/ in your prefered browser
 - Home Page
 - Nav button scale on hover
 - Hamburger animation on hover
-- Spring Hover component
 - Debug Transformation delay
-- 404 Not Found Page
+- Make Menu scrollable, dynamic width based on screen size

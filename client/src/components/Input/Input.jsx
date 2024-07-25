@@ -1,6 +1,13 @@
 import "./Input.scss";
 
-const Input = ({ color, value, children, set, min = -200, max = 200 }) => {
+const Input = ({
+  color,
+  value,
+  children,
+  handleChange,
+  min = -200,
+  max = 200,
+}) => {
   const style = {
     accentColor: color,
   };
@@ -13,7 +20,7 @@ const Input = ({ color, value, children, set, min = -200, max = 200 }) => {
         type="range"
         min={min}
         max={max}
-        onChange={(e) => set(parseFloat(e.target.value))}
+        onChange={(e) => handleChange(parseFloat(e.target.value))}
         style={style}
         className="label__input"
       />
@@ -22,7 +29,7 @@ const Input = ({ color, value, children, set, min = -200, max = 200 }) => {
         value={value}
         min={min}
         max={max}
-        onChange={(e) => set(parseFloat(e.target.value) || 0)}
+        onChange={(e) => handleChange(parseFloat(e.target.value) || 0)}
         className="label__input"
       />
     </label>
