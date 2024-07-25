@@ -1,12 +1,6 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.background {
-  @include flex(center, center);
-  width: 100vw;
-  height: 98vh;
-  background: linear-gradient(180deg, #ffffff 0%, #e3e2e2 100%);
-}
 .circle {
   width: 200px;
   height: 200px;

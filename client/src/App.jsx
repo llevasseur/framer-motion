@@ -6,6 +6,7 @@ import Nav from "./components/Nav/Nav";
 import Refresh from "./components/Refresh/Refresh";
 import HomePage from "./pages/HomePage/HomePage";
 import Footer from "./components/Footer/Footer";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   const location = useLocation();
@@ -29,8 +30,9 @@ function App() {
           return { color: "#900af6", type: "Drag" };
         case "/":
         case "/circle":
-        default:
           return { color: "#1300ff", type: "Opacity" }; //$blue
+        default:
+          return { color: "#000000", type: "Not Found" };
       }
     };
     setPageData(getPageData());
@@ -44,23 +46,9 @@ function App() {
         <Route path="/square" element={<HomePage type="square" />} />
         <Route path="/pill" element={<HomePage type="pill" />} />
         <Route path="drag" element={<HomePage type="drag" />} />
-        <Route
-          path="/*"
-          element={
-            <h1
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "16px",
-              }}
-            >
-              404 Not Found
-            </h1>
-          }
-        />
+        <Route path="/*" element={<NotFoundPage />} />
       </Routes>
-      <Nav {...pageData} />
+      <Nav color={pageData.color} />
       <Refresh color={pageData.color} onClick={handleRefresh} />
       <Footer {...pageData} />
     </>

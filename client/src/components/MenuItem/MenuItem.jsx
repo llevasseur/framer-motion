@@ -26,7 +26,7 @@ const MenuItem = ({ page }) => {
   const { isOpen, toggleOpen } = useContext(NavContext);
   const navigate = useNavigate();
 
-  const iconStyle = { border: page.url == "/circle" ? "10px" : "2px" };
+  const iconStyle = { border: page.url === "/circle" ? "10px" : "2px" };
   const textStyle = { color: page.color };
 
   const handleClick = () => {

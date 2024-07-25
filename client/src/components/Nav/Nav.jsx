@@ -27,7 +27,7 @@ const pagesData = [
   { url: "/drag", name: "Drag", icon: DragIcon, color: "#900af6" },
 ];
 
-const Nav = ({ color, type, pages }) => {
+const Nav = ({ color }) => {
   const { isOpen, toggleOpen } = useContext(NavContext);
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
