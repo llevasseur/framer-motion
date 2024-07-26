@@ -1,11 +1,12 @@
 import { Navigate, useParams } from "react-router-dom";
-import validTypes from "../../data/validTypes.json";
 import DisplayPage from "../../pages/DisplayPage/DisplayPage";
+
+const VALID_TYPES = ["circle", "square", "pill", "drag"];
 
 const RouteGuard = () => {
   const { type } = useParams();
 
-  if (!validTypes.includes(type)) {
+  if (!VALID_TYPES.includes(type)) {
     return <Navigate to="/not-found" />;
   }
   return <DisplayPage type={type} />;

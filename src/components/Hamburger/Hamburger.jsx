@@ -1,7 +1,6 @@
-import { NavContext } from "../Nav/NavContext";
+import { useNavContext } from "../../context/NavContext";
 import "./Hamburger.scss";
 import { motion } from "framer-motion";
-import { useContext } from "react";
 
 const Path = (props) => {
   return (
@@ -10,7 +9,7 @@ const Path = (props) => {
 };
 
 const Hamburger = ({ color, toggle, isTablet }) => {
-  const { isOpen } = useContext(NavContext);
+  const { isOpen } = useNavContext();
   const baseScale = isTablet ? 1.5 : 1;
 
   const containerVariants = {

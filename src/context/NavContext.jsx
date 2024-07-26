@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useContext } from "react";
 import { useCycle } from "framer-motion";
 
-export const NavContext = createContext();
+const NavContext = createContext();
 
 export const NavProvider = ({ children }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
@@ -12,3 +12,5 @@ export const NavProvider = ({ children }) => {
     </NavContext.Provider>
   );
 };
+
+export const useNavContext = () => useContext(NavContext);

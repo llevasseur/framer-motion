@@ -1,7 +1,7 @@
 import "./Nav.scss";
 import { motion } from "framer-motion";
-import { useState, useEffect, useContext } from "react";
-import { NavContext } from "./NavContext";
+import { useState, useEffect } from "react";
+import { useNavContext } from "../../context/NavContext";
 import Hamburger from "../Hamburger/Hamburger";
 import Menu from "../Menu/Menu";
 import CircleIcon from "../../assets/images/circle.png";
@@ -28,7 +28,7 @@ const pagesData = [
 ];
 
 const Nav = ({ color }) => {
-  const { isOpen, toggleOpen } = useContext(NavContext);
+  const { isOpen, toggleOpen } = useNavContext();
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
   );
