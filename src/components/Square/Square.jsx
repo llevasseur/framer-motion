@@ -2,7 +2,7 @@ import "./Square.scss";
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import Input from "../../components/Input/Input";
+import Input from "../Input/Input";
 
 const fadeIn = {
   initial: { opacity: 0 },

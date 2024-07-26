@@ -1,4 +1,4 @@
-import "./HomePage.scss";
+import "./DisplayPage.scss";
 import { useState, useEffect } from "react";
 
 import Circle from "../../components/Circle/Circle";
@@ -6,33 +6,24 @@ import Square from "../../components/Square/Square";
 import Pill from "../../components/Pill/Pill";
 import Drag from "../../components/Drag/Drag";
 
-const HomePage = ({ type }) => {
-  const [app, setApp] = useState(<Circle />);
-
+const DisplayPage = ({ type }) => {
+  const [app, setApp] = useState(<></>);
   useEffect(() => {
     const applyType = () => {
       switch (type) {
         case "square":
-          setApp(<Square />);
-          break;
-
+          return <Square />;
         case "pill":
-          setApp(<Pill />);
-          break;
-
+          return <Pill />;
         case "drag":
-          setApp(<Drag />);
-          break;
-
+          return <Drag />;
         case "circle":
         default:
-          setApp(<Circle />);
-          break;
+          return <Circle />;
       }
     };
-    applyType();
+    setApp(applyType());
   }, [type]);
-
   return (
     <>
       <div className="app-container">{app}</div>
@@ -40,4 +31,4 @@ const HomePage = ({ type }) => {
   );
 };
 
-export default HomePage;
+export default DisplayPage;
