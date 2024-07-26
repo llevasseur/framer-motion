@@ -33,7 +33,7 @@ const MenuItem = ({ page }) => {
       toggleOpen(); // collapse the menu
       setTimeout(() => {
         navigate(page.url);
-      }, 500);
+      }, 450);
     } else {
       navigate(page.url);
     }

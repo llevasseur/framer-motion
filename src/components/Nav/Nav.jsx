@@ -59,7 +59,7 @@ const Nav = ({ color }) => {
       height: isTablet ? 48 : 32,
       borderRadius: "5px",
       transition: {
-        delay: 0.5,
+        delay: 0.4,
         type: "spring",
         stiffness: 400,
         damping: 40,
