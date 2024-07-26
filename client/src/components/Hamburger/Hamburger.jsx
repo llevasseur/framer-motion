@@ -64,21 +64,22 @@ const Hamburger = ({ color, toggle, isTablet }) => {
 
   const burgerStyle = isTablet
     ? {
-        top: "19px",
-        left: "18.5px",
+        top: "8px",
+        left: "8px",
         transform: `scale(${baseScale})`,
       }
     : {
-        top: "11px",
-        left: "11px",
+        top: "0px",
+        left: "0px",
       };
+
   return (
     <motion.button
       onClick={toggle}
       className="hamburger"
       style={burgerStyle}
       animate={{ scale: baseScale }}
-      whileTap={{ scale: baseScale * 0.95 }}
+      // whileTap={{ scale: baseScale * 0.95 }}
     >
       <motion.svg
         width="32"
@@ -87,7 +88,7 @@ const Hamburger = ({ color, toggle, isTablet }) => {
         variants={containerVariants}
         initial="closed"
         animate={isOpen ? "open" : "closed"}
-        whileHover="hover"
+        // whileHover="hover"
       >
         <Path
           custom={1}

@@ -32,6 +32,7 @@ const Nav = ({ color }) => {
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
   );
+  const [hover, setHover] = useState(1.1);
 
   const boxStyle = {
     border: `1px dotted ${color}`,
@@ -78,6 +79,21 @@ const Nav = ({ color }) => {
       window.removeEventListener("resize", debouncedHandleResize);
     };
   }, []);
+
+  useEffect(() => {
+    let timer;
+    if (!isOpen) {
+      timer = setTimeout(() => {
+        setHover(1.1);
+      }, 700);
+    } else {
+      setHover(1);
+    }
+
+    // Clean up the timer when the component is unmounted or when isOpen changes
+    return () => clearTimeout(timer);
+  }, [isOpen]);
+
   return (
     <motion.nav
       initial={false}
@@ -87,18 +103,21 @@ const Nav = ({ color }) => {
     >
       <motion.div
         key={`${isTablet}`}
+        style={boxStyle}
         className="nav__background"
         variants={sidebar}
+        initial="closed"
+        whileHover={isOpen ? "" : { scale: hover }}
+        // whileTap="pressed"
         animate={isOpen ? sidebar.open : sidebar.closed}
-        style={boxStyle}
-      />
-      <Menu pages={pagesData} color={color} isOpen={isOpen} />
-      <Hamburger
-        color={color}
-        toggle={() => toggleOpen()}
-        isTablet={isTablet}
-      />
-      <Menu pages={pagesData} color={color} />
+      >
+        <Menu pages={pagesData} color={color} isOpen={isOpen} />
+        <Hamburger
+          color={color}
+          toggle={() => toggleOpen()}
+          isTablet={isTablet}
+        />
+      </motion.div>
     </motion.nav>
   );
 };
