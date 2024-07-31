@@ -3,12 +3,12 @@ import { motion } from "framer-motion";
 
 const circleBox = {
   initial: { opacity: 0 },
-  animate: { opacity: 1 },
+  animate: { opacity: 1, transition: { duration: 1 } },
 };
 
 const Circle = () => {
   return (
-    <motion.div className="background">
+    <motion.div>
       <motion.div
         className="circle"
         variants={circleBox}

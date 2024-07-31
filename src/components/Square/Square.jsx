@@ -26,38 +26,36 @@ const Square = () => {
     setRotate(value);
   };
   return (
-    <motion.div className="background">
-      <motion.div
-        className="square"
-        variants={fadeIn}
-        initial="initial"
-        animate="animate"
-      >
-        <div>
-          <motion.div
-            className="square__box"
-            animate={{ x, y, rotate }}
-            transition={{ type: "spring" }}
-          />
-        </div>
-        <div className="inputs">
-          <Input color={"red"} value={x} handleChange={handleChangeX}>
-            x
-          </Input>
-          <Input color={"red"} value={y} handleChange={handleChangeY}>
-            y
-          </Input>
-          <Input
-            color={"red"}
-            value={rotate}
-            handleChange={handleChangeRotate}
-            min={-180}
-            max={180}
-          >
-            rotate
-          </Input>
-        </div>
-      </motion.div>
+    <motion.div
+      className="square"
+      variants={fadeIn}
+      initial="initial"
+      animate="animate"
+    >
+      <div>
+        <motion.div
+          className="square__box"
+          animate={{ x, y, rotate }}
+          transition={{ type: "spring" }}
+        />
+      </div>
+      <div className="inputs">
+        <Input color={"red"} value={x} handleChange={handleChangeX}>
+          x
+        </Input>
+        <Input color={"red"} value={y} handleChange={handleChangeY}>
+          y
+        </Input>
+        <Input
+          color={"red"}
+          value={rotate}
+          handleChange={handleChangeRotate}
+          min={-180}
+          max={180}
+        >
+          rotate
+        </Input>
+      </div>
     </motion.div>
   );
 };

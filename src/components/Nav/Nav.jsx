@@ -9,16 +9,7 @@ import SquareIcon from "../../assets/images/square.png";
 import PillIcon from "../../assets/images/pill.png";
 import DragIcon from "../../assets/images/drag.png";
 
-const debounce = (fn, ms) => {
-  let timer;
-  return (_) => {
-    clearTimeout(timer);
-    timer = setTimeout((_) => {
-      timer = null;
-      fn();
-    }, ms);
-  };
-};
+import { debounce } from "../../util/debounce.js";
 
 const pagesData = [
   { url: "/circle", name: "Opacity", icon: CircleIcon, color: "blue" },
@@ -75,7 +66,7 @@ const Nav = ({ color }) => {
 
     window.addEventListener("resize", debouncedHandleResize);
 
-    return (_) => {
+    return () => {
       window.removeEventListener("resize", debouncedHandleResize);
     };
   }, []);

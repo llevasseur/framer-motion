@@ -4,8 +4,8 @@
 .drag {
   @include flex(center, center);
   width: 100vw;
-  height: 98vh;
-  background: linear-gradient(180deg, #9c1aff 0%, rgb(119, 0, 255) 100%);
+  height: 100vh;
+  
   overflow: hidden;
 
   &__area {

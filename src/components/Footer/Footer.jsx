@@ -1,41 +1,36 @@
-import './Footer.scss'
-import { motion } from 'framer-motion'
-import { useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import "./Footer.scss";
+import { motion } from "framer-motion";
 
-import Logo from '../Logo/Logo'
+import Logo from "../Logo/Logo";
 
 const box = {
-  rest: { scale: 1, opacity: '100%' },
+  rest: { scale: 1, opacity: "100%" },
   hover: { scale: 1.1 },
-}
+};
 
 const Footer = ({ color, type }) => {
   const style = {
     color: color,
     borderTop: `0.5px dotted ${color}`,
-    borderBottom: 'none',
-    borderRight: 'none',
-    borderLeft: 'none',
-    borderRadius: '2px',
-  }
+    borderBottom: "none",
+    borderRight: "none",
+    borderLeft: "none",
+  };
 
   return (
-    <>
-      <motion.div
-        variants={box}
-        initial="rest"
-        whileHover="hover"
-        className="footer"
-        style={style}
-      >
-        <footer className="footer__box">
-          <Logo color={style.color} />
-          <code>Framer-Motion 101: {type}</code>
-        </footer>
-      </motion.div>
-    </>
-  )
-}
+    <motion.div
+      variants={box}
+      initial="rest"
+      whileHover="hover"
+      className="footer"
+      style={style}
+    >
+      <footer className="footer__box">
+        <Logo color={style.color} />
+        <code>Framer-Motion 101: {type}</code>
+      </footer>
+    </motion.div>
+  );
+};
 
-export default Footer
+export default Footer;

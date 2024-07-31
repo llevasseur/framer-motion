@@ -19,15 +19,17 @@ const App = () => {
 
   return (
     <>
-      <Routes>
-        <Route path="/" element={<DisplayPage type="circle" />} />
-        {/* Use a RouteGuard to only route to legal types or not-found */}
-        <Route path="/:type" element={<RouteGuard />} />
-        <Route path="/not-found" element={<NotFoundPage />} />
-      </Routes>
+      <div className="app-container">
+        <Routes>
+          <Route path="/" element={<DisplayPage type="circle" />} />
+          {/* Use a RouteGuard to only route to legal types or not-found */}
+          <Route path="/:type" element={<RouteGuard />} />
+          <Route path="/not-found" element={<NotFoundPage />} />
+        </Routes>
+        <Footer {...pageData} />
+      </div>
       <Nav color={pageData.color} />
       <Refresh color={pageData.color} onClick={handleRefresh} />
-      <Footer {...pageData} />
     </>
   );
 };

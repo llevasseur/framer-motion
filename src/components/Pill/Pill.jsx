@@ -11,15 +11,13 @@ const pillBox = {
 
 const Pill = () => {
   return (
-    <motion.div className="background">
-      <motion.div
-        className="pill"
-        variants={pillBox}
-        initial="initial"
-        animate="animate"
-        whileHover="hover"
-      ></motion.div>
-    </motion.div>
+    <motion.div
+      className="pill"
+      variants={pillBox}
+      initial="initial"
+      animate="animate"
+      whileHover="hover"
+    ></motion.div>
   );
 };
 

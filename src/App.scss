@@ -11,25 +11,14 @@
 body {
   background-color: $background;
   overflow: hidden;
-  
+
   -webkit-font-smoothing: antialiased;
 
   padding-bottom: 100px;
 }
 
 .app-container {
-  @include flex(center, center);
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 90vh;
-}
-
-.background {
-  @include flex(center, center);
-  width: 100vw;
-  height: 98vh;
-  background: linear-gradient(180deg, #ffffff 0%, #e3e2e2 100%);
+  @include flex();
+  flex-direction: column;
+  height: 100vh;
 }
