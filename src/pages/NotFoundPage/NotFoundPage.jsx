@@ -7,9 +7,17 @@ const notFoundBox = {
   animate: { opacity: 1, scale: 1.1 },
 };
 
-const NotFoundPage = () => {
+const BACKGROUND = {
+  DEFAULT: "linear-gradient(180deg, #ffffff 0%, #e3e2e2 100%)",
+};
+
+const NotFoundPage = ({ height }) => {
+  console.log(height);
   return (
-    <motion.div className="background">
+    <motion.div
+      className="background"
+      style={{ background: BACKGROUND.DEFAULT, height: `${height * 100}vh` }}
+    >
       <motion.div
         className="not-found"
         variants={notFoundBox}

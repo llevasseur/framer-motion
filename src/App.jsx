@@ -1,4 +1,5 @@
 import "./App.scss";
+import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { usePageData } from "./context/PageDataContext";
 import RouteGuard from "./util/RouteGuard/RouteGuard";
@@ -9,9 +10,17 @@ import DisplayPage from "./pages/DisplayPage/DisplayPage";
 import Footer from "./components/Footer/Footer";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
+import { useExponentialHeight } from "./hooks/useExponentialHeight";
+
 const App = () => {
   // Custom hook to track page type and color using useLocation
   const pageData = usePageData();
+
+  const [height, setHeight] = useState(useExponentialHeight(0.72, 4300));
+
+  const handleHeightChange = (newHeight) => {
+    setHeight(newHeight);
+  };
 
   const handleRefresh = () => {
     window.location.reload();
@@ -21,12 +30,15 @@ const App = () => {
     <>
       <div className="app-container">
         <Routes>
-          <Route path="/" element={<DisplayPage type="circle" />} />
+          <Route
+            path="/"
+            element={<DisplayPage type="circle" height={height} />}
+          />
           {/* Use a RouteGuard to only route to legal types or not-found */}
-          <Route path="/:type" element={<RouteGuard />} />
-          <Route path="/not-found" element={<NotFoundPage />} />
+          <Route path="/:type" element={<RouteGuard height={height} />} />
+          <Route path="/not-found" element={<NotFoundPage height={height} />} />
         </Routes>
-        <Footer {...pageData} />
+        <Footer {...pageData} height={height} />
       </div>
       <Nav color={pageData.color} />
       <Refresh color={pageData.color} onClick={handleRefresh} />
