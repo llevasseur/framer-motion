@@ -61,6 +61,7 @@ const Nav = ({ color }) => {
   };
 
   const handleToggleOpen = () => {
+    controls.start({ scale: 1 });
     toggleOpen();
   };
 
