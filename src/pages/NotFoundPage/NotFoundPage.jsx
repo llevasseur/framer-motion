@@ -12,7 +12,6 @@ const BACKGROUND = {
 };
 
 const NotFoundPage = ({ height }) => {
-  console.log(height);
   return (
     <motion.div
       className="background"

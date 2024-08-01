@@ -1,6 +1,7 @@
 import "./Square.scss";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { debounce } from "lodash";
 
 import Input from "../Input/Input";
 
@@ -9,21 +10,22 @@ const fadeIn = {
   animate: { opacity: 1 },
 };
 
+const initialInputs = {
+  x: 0,
+  y: 0,
+  rotate: 0,
+};
+
 const Square = () => {
-  const [x, setX] = useState(0);
-  const [y, setY] = useState(0);
-  const [rotate, setRotate] = useState(0);
+  const [inputValues, setInputValues] = useState(initialInputs);
 
-  const handleChangeX = (value) => {
-    setX(value);
-  };
-
-  const handleChangeY = (value) => {
-    setY(value);
-  };
-
-  const handleChangeRotate = (value) => {
-    setRotate(value);
+  const handleInputChange = (event) => {
+    let { name, value } = event.target;
+    value = parseInt(value);
+    setInputValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
   };
   return (
     <motion.div
@@ -35,26 +37,31 @@ const Square = () => {
       <div>
         <motion.div
           className="square__box"
-          animate={{ x, y, rotate }}
+          animate={{ ...inputValues }}
           transition={{ type: "spring" }}
         />
       </div>
       <div className="inputs">
-        <Input color={"red"} value={x} handleChange={handleChangeX}>
-          x
-        </Input>
-        <Input color={"red"} value={y} handleChange={handleChangeY}>
-          y
-        </Input>
         <Input
           color={"red"}
-          value={rotate}
-          handleChange={handleChangeRotate}
+          name="x"
+          value={inputValues.x}
+          handleChange={handleInputChange}
+        />
+        <Input
+          color={"red"}
+          name="y"
+          value={inputValues.y}
+          handleChange={handleInputChange}
+        />
+        <Input
+          color={"red"}
+          value={inputValues.rotate}
+          name="rotate"
+          handleChange={handleInputChange}
           min={-180}
           max={180}
-        >
-          rotate
-        </Input>
+        />
       </div>
     </motion.div>
   );

@@ -16,14 +16,14 @@ export const PageDataProvider = ({ children }) => {
         case "/square":
           return { color: "#fe0222", type: "Transformations" }; //$red
         case "/pill":
-          return { color: "#00ccff", type: "Spring Hover" };
+          return { color: "#00ccff", type: "Spring Hover" }; //$lightblue
         case "/drag":
-          return { color: "#900af6", type: "Drag" };
+          return { color: "#900af6", type: "Drag" }; //$purple
         case "/":
         case "/circle":
           return { color: "#1300ff", type: "Opacity" }; //$blue
         default:
-          return { color: "#000000", type: "Not Found" };
+          return { color: "#000000", type: "Not Found" }; //$black
       }
     };
     setPageData(getPageData());

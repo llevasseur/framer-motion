@@ -58,6 +58,10 @@ const Nav = ({ color }) => {
     },
   };
 
+  const handleToggleOpen = () => {
+    toggleOpen();
+  };
+
   useEffect(() => {
     const handleResize = () => {
       setIsTablet(window.innerWidth >= 768);
@@ -99,13 +103,13 @@ const Nav = ({ color }) => {
         variants={sidebar}
         initial="closed"
         whileHover={isOpen ? "" : { scale: hover }}
-        // whileTap="pressed"
+        whileTap={isOpen ? "" : { scale: 0.95 }}
         animate={isOpen ? sidebar.open : sidebar.closed}
       >
         <Menu pages={pagesData} color={color} isOpen={isOpen} />
         <Hamburger
           color={color}
-          toggle={() => toggleOpen()}
+          toggle={handleToggleOpen}
           isTablet={isTablet}
         />
       </motion.div>

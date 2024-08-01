@@ -1,36 +1,33 @@
 import "./Input.scss";
 
-const Input = ({
-  color,
-  value,
-  children,
-  handleChange,
-  min = -200,
-  max = 200,
-}) => {
+const Input = ({ color, name, value, handleChange, min = -200, max = 200 }) => {
   const style = {
     accentColor: color,
+    color: color,
   };
 
   return (
-    <label className="label">
-      <code className="label__code">{children}</code>
+    <label className="input">
+      <code className="input__code">{name}</code>
       <input
-        value={value}
+        className="input__option"
         type="range"
+        value={value}
+        name={name}
         min={min}
         max={max}
-        onChange={(e) => handleChange(parseFloat(e.target.value))}
+        onChange={handleChange}
         style={style}
-        className="label__input"
       />
       <input
+        className="input__option"
         type="number"
         value={value}
+        name={name}
         min={min}
         max={max}
-        onChange={(e) => handleChange(parseFloat(e.target.value) || 0)}
-        className="label__input"
+        onChange={handleChange}
+        style={style}
       />
     </label>
   );

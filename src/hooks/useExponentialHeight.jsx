@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { debounce } from "../util/debounce";
 
 const getZoomLevel = () => {
@@ -13,11 +13,7 @@ const getDynamicHeightRange = (zoomLevel) => {
   return { minHeight, maxHeight };
 };
 
-export const useExponentialHeight = (base, multiplier) => {
-  const [height, setHeight] = useState(
-    (window.innerHeight - 64) / window.innerHeight
-  );
-
+export const useExponentialHeight = (base, multiplier, handleHeightChange) => {
   const getExponentialHeight = (screenHeight) => {
     let zoomLevel = getZoomLevel();
     const adjustedMultiplier = multiplier / zoomLevel;
@@ -32,12 +28,12 @@ export const useExponentialHeight = (base, multiplier) => {
   };
 
   useEffect(() => {
-    setHeight(getExponentialHeight(window.innerHeight));
+    handleHeightChange(getExponentialHeight(window.innerHeight));
   }, []);
 
   useEffect(() => {
     const handleResize = () => {
-      setHeight(getExponentialHeight(window.innerHeight));
+      handleHeightChange(getExponentialHeight(window.innerHeight));
     };
 
     const debouncedHandleResize = debounce(handleResize, 10);
@@ -51,6 +47,4 @@ export const useExponentialHeight = (base, multiplier) => {
       window.removeEventListener("fullscreenchange", handleResize);
     };
   }, []);
-
-  return height;
 };

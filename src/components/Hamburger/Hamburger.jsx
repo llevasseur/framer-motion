@@ -12,13 +12,6 @@ const Hamburger = ({ color, toggle, isTablet }) => {
   const { isOpen } = useNavContext();
   const baseScale = isTablet ? 1.5 : 1;
 
-  const containerVariants = {
-    hover: {
-      scale: 1.1,
-      transition: { staggerChildren: 1 },
-    },
-  };
-
   const pathVariants = {
     closed: (custom) => ({
       d:
@@ -77,18 +70,9 @@ const Hamburger = ({ color, toggle, isTablet }) => {
       onClick={toggle}
       className="hamburger"
       style={burgerStyle}
-      animate={{ scale: baseScale }}
-      // whileTap={{ scale: baseScale * 0.95 }}
+      animate={{ scale: baseScale }} // scale between breakpoints
     >
-      <motion.svg
-        width="32"
-        height="32"
-        viewBox="0 0 40 40"
-        variants={containerVariants}
-        initial="closed"
-        animate={isOpen ? "open" : "closed"}
-        // whileHover="hover"
-      >
+      <motion.svg width="32" height="32" viewBox="0 0 40 40">
         <Path
           custom={1}
           variants={pathVariants}

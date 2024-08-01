@@ -16,11 +16,16 @@ const App = () => {
   // Custom hook to track page type and color using useLocation
   const pageData = usePageData();
 
-  const [height, setHeight] = useState(useExponentialHeight(0.72, 4300));
+  const [height, setHeight] = useState(
+    (window.innerHeight - 64) / window.innerHeight
+  );
 
   const handleHeightChange = (newHeight) => {
     setHeight(newHeight);
   };
+
+  // Sets window event listeners for dynamic background height
+  useExponentialHeight(0.72, 4300, handleHeightChange);
 
   const handleRefresh = () => {
     window.location.reload();

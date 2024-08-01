@@ -1,7 +1,7 @@
 @use "../../styles/variables" as *;
 @use "../../styles/mixins" as *;
 
-.label {
+.input {
   @include flex(center, center);
   margin: 10px 10px;
 
@@ -13,20 +13,15 @@
     }
   }
 
-  &__input {
+  &__option {
     @include flex(center, center);
     flex-direction: column;
-    // padding-left: 15px;
-
-    @include tablet {
-      // padding-left: 20px;
-    }
 
     &[type="number"] {
+      background: none;
+      text-align: center;
       margin-left: 10px;
       border: 0;
-      border-bottom: 1px dotted $red;
-      color: $red;
 
       &:focus {
         outline: none;
