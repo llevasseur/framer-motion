@@ -29,8 +29,6 @@ Open http://localhost:5173/ in your prefered browser
 
 ## Future Features 💡
 
-- Home Page
-- Nav button scale on hover
-- Hamburger animation on hover
 - Debug Transformation delay
 - Make Menu scrollable, dynamic width based on screen size
+- Bug fix: Menu re opens when moving between breakpoints

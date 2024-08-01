@@ -1,5 +1,5 @@
 import "./Nav.scss";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useNavContext } from "../../context/NavContext";
 import Hamburger from "../Hamburger/Hamburger";
@@ -23,6 +23,8 @@ const Nav = ({ color }) => {
   const [isTablet, setIsTablet] = useState(
     window.innerWidth >= 768 ? true : false
   );
+
+  const controls = useAnimation();
   const [hover, setHover] = useState(1.1);
 
   const boxStyle = {
@@ -78,16 +80,30 @@ const Nav = ({ color }) => {
   useEffect(() => {
     let timer;
     if (!isOpen) {
+      controls.start({ scale: 1 });
       timer = setTimeout(() => {
         setHover(1.1);
       }, 700);
     } else {
+      controls.start({ scale: 1 });
       setHover(1);
     }
 
     // Clean up the timer when the component is unmounted or when isOpen changes
     return () => clearTimeout(timer);
-  }, [isOpen]);
+  }, [isOpen, controls]);
+
+  const handleHoverStart = () => {
+    if (!isOpen) {
+      controls.start((i) => ({
+        scale: [1, 1.3, 1],
+        transition: { duration: 0.5, delay: i * 0.1 },
+      }));
+    }
+  };
+  const handleHoverEnd = () => {
+    controls.start({ scale: 1 });
+  };
 
   return (
     <motion.nav
@@ -105,12 +121,16 @@ const Nav = ({ color }) => {
         whileHover={isOpen ? "" : { scale: hover }}
         whileTap={isOpen ? "" : { scale: 0.95 }}
         animate={isOpen ? sidebar.open : sidebar.closed}
+        onHoverStart={handleHoverStart}
+        onHoverEnd={handleHoverEnd}
       >
         <Menu pages={pagesData} color={color} isOpen={isOpen} />
         <Hamburger
           color={color}
           toggle={handleToggleOpen}
           isTablet={isTablet}
+          hoverScale={hover}
+          controls={controls}
         />
       </motion.div>
     </motion.nav>
