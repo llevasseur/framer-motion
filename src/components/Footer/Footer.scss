@@ -1,0 +1,31 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+.footer {
+  position: fixed;
+  bottom: 0;
+
+  width: 100%;
+
+  padding: 1.25rem;
+  // margin-left: 5vw;
+
+  border-radius: 2px;
+
+  font-size: 1rem;
+
+  z-index: 3;
+
+  // Pixilate body in footer on height resize
+  background-image: radial-gradient(rgba(0, 0, 0, 0) 1px, $background 1px);
+  background-size: 4px 4px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+  -moz-backdrop-filter: blur(3px);
+
+  &__box {
+    @include flex(flex-start, center);
+    gap: 16px;
+    margin-left: 6vw;
+  }
+}

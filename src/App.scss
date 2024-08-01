@@ -1,0 +1,24 @@
+@use "./styles/variables" as *;
+@use "./styles/mixins" as *;
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: $background;
+  overflow: hidden;
+
+  -webkit-font-smoothing: antialiased;
+
+  padding-bottom: 100px;
+}
+
+.app-container {
+  @include flex();
+  flex-direction: column;
+  height: 100vh;
+}
