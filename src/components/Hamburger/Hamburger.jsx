@@ -8,14 +8,15 @@ const Path = (props) => {
   );
 };
 
-const Hamburger = ({ color, toggle, isTablet }) => {
+const Hamburger = (props) => {
+  const { color, toggle, isTablet, hoverScale, controls } = props;
   const { isOpen } = useNavContext();
   const baseScale = isTablet ? 1.5 : 1;
 
-  const pathVariants = {
+  const bunPathVariants = {
     closed: (custom) => ({
       d:
-        custom === 1
+        custom === 0
           ? "M 10 13 L 30 13"
           : custom === 2
           ? "M 10 27 L 30 27"
@@ -25,7 +26,7 @@ const Hamburger = ({ color, toggle, isTablet }) => {
     }),
     open: (custom) => ({
       d:
-        custom === 1
+        custom === 0
           ? "M 11 11 L 29 29"
           : custom === 2
           ? "M 11 29 L 29 11"
@@ -33,24 +34,18 @@ const Hamburger = ({ color, toggle, isTablet }) => {
       scale: 1,
       transition: { duration: 0.2 },
     }),
-    hover: (custom) => ({
-      scale: 1.1,
-    }),
   };
 
   const middlePathVariants = {
     closed: {
       opacity: 1,
       scale: 1,
-      transition: { duration: 0.1 },
+      transition: { duration: 0.2 },
     },
     open: {
       opacity: 0,
       scale: 1,
-      transition: { duration: 0.1 },
-    },
-    hover: {
-      scale: 1.1,
+      transition: { duration: 0.2 },
     },
   };
 
@@ -74,24 +69,25 @@ const Hamburger = ({ color, toggle, isTablet }) => {
     >
       <motion.svg width="32" height="32" viewBox="0 0 40 40">
         <Path
-          custom={1}
-          variants={pathVariants}
+          custom={0} // custom sets order for control animation
+          variants={bunPathVariants}
           initial="closed"
-          animate={isOpen ? "open" : "closed"}
+          animate={isOpen ? "open" : hoverScale === 1 ? "closed" : controls}
           stroke={color || "hsl(0, 0%, 18%)"}
         />
         <Path
+          custom={1}
           d="M 10 20 L 30 20"
           variants={middlePathVariants}
           initial="closed"
-          animate={isOpen ? "open" : "closed"}
+          animate={isOpen ? "open" : hoverScale === 1 ? "closed" : controls}
           stroke={color || "hsl(0, 0%, 18%)"}
         />
         <Path
           custom={2}
-          variants={pathVariants}
+          variants={bunPathVariants}
           initial="closed"
-          animate={isOpen ? "open" : "closed"}
+          animate={isOpen ? "open" : hoverScale === 1 ? "closed" : controls}
           stroke={color || "hsl(0, 0%, 18%)"}
         />
       </motion.svg>
