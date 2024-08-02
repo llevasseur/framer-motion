@@ -8,7 +8,8 @@ const Path = (props) => {
   );
 };
 
-const Hamburger = ({ color, toggle, isTablet, hoverScale, controls }) => {
+const Hamburger = (props) => {
+  const { color, toggle, isTablet, hoverScale, controls } = props;
   const { isOpen } = useNavContext();
   const baseScale = isTablet ? 1.5 : 1;
 
