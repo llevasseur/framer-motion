@@ -1,7 +1,7 @@
 import { Navigate, useParams } from "react-router-dom";
 import DisplayPage from "../../pages/DisplayPage/DisplayPage";
 
-const VALID_TYPES = ["circle", "square", "pill", "drag"];
+const VALID_TYPES = ["circle", "square", "pill", "drag", "pod"];
 
 const RouteGuard = ({ height }) => {
   const { type } = useParams();
